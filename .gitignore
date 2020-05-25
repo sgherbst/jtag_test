@@ -1,0 +1,11 @@
+*.jou
+*.log
+*.str
+*.edf
+*.edif
+*.edn
+
+*.cache
+*.hw
+*.ip_user_files
+*.runs
