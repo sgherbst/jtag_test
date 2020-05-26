@@ -1,6 +1,5 @@
 *.bxml
 *.xdc
-hdl/
 hw_handoff/
 ip/
 ipshared/
