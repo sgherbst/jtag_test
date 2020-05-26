@@ -1,53 +1,6 @@
-#include "xparameters.h"
-#include "xgpio.h"
+#include "gpio_funcs.h"
 #include "xil_printf.h"
 #include "sleep.h"
-
-XGpio Gpio;
-
-u32 gpio_out = 0x00000004;
-
-void poke_bit(u32 idx, u32 val){
-	// change bit
-	gpio_out = (gpio_out & (~(1UL << idx))) | ((val & 1) << idx);
-
-	// write value
-	XGpio_DiscreteWrite(&Gpio, 2, gpio_out);
-
-	// slight delay
-    usleep(10);
-}
-
-void poke_tdi(u32 val){
-	poke_bit(3, val);
-}
-
-void poke_tck(u32 val){
-	poke_bit(0, val);
-}
-
-void poke_tms(u32 val){
-	poke_bit(2, val);
-}
-
-void poke_trst_n(u32 val){
-	poke_bit(1, val);
-}
-
-u32 get_tdo(){
-	usleep(10);
-	return (XGpio_DiscreteRead(&Gpio, 1) & 1);
-}
-
-u32 get_tap_state(){
-	usleep(10);
-	return ((XGpio_DiscreteRead(&Gpio, 1) >> 4) & 0xffff);
-}
-
-u32 get_magic_bits(){
-	usleep(10);
-	return ((XGpio_DiscreteRead(&Gpio, 1) >> 20) & 0xfff);
-}
 
 void cycle(){
 	poke_tck(1);
@@ -164,11 +117,7 @@ u32 read_id(){
 
 int main()
 {
-	int Status;
-
-	/* Initialize the GPIO driver */
-	Status = XGpio_Initialize(&Gpio, XPAR_GPIO_0_DEVICE_ID);
-	if (Status != XST_SUCCESS) {
+	if (init_GPIO() != 0) {
 		xil_printf("GPIO Initialization Failed\r\n");
 		return XST_FAILURE;
 	}
