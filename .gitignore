@@ -9,3 +9,11 @@
 *.hw
 *.ip_user_files
 *.runs
+
+NA
+*.cache
+*.hw
+*.ip_user_files
+*.runs 
+*.sdk 
+*.sim 
