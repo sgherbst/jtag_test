@@ -2,7 +2,7 @@
 # Create the Vivado project #
 #############################
 
-create_project -force project ../build/project -part xc7z020clg400-1
+create_project -force project project -part xc7z020clg400-1
 set_property board_part www.digilentinc.com:pynq-z1:part0:1.0 [current_project]
 
 ############################

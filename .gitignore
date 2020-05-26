@@ -5,15 +5,5 @@
 *.edif
 *.edn
 
-*.cache
-*.hw
-*.ip_user_files
-*.runs
-
+project
 NA
-*.cache
-*.hw
-*.ip_user_files
-*.runs 
-*.sdk 
-*.sim 
