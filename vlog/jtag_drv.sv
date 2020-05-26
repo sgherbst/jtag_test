@@ -37,7 +37,7 @@ module jtag_drv(
     assign tms = gpio_out[2];
     assign tdi = gpio_out[3];
     
-    design_1_wrapper bd_i (
+    design_1 bd_i (
         .DDR_addr(DDR_addr),
         .DDR_ba(DDR_ba),
         .DDR_cas_n(DDR_cas_n),
