@@ -3,8 +3,8 @@ steps:
     command: |
       # set up environment
       source /etc/environment
-      export FPGA_BOARD=xc7z020clg484-1
-      export FPGA_PART=xilinx.com:zc702:part0:1.4
+      export FPGA_BOARD=xilinx.com:zc702:part0:1.4
+      export FPGA_PART=xc7z020clg484-1
       export TAP_CORE_LOC=/tools/synopsys/syn/L-2016.03-SP5-5/dw/syn_ver/tap_core.edf
       printenv
 
