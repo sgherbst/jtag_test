@@ -4,7 +4,7 @@
 
 This project is an example of automating Vivado and its SDK to exercise an emulated JTAG TAP controller.  It takes a synthesized TAP core, instantiates in a test harness that is driven by a CPU macro on the FPGA, and builds of bitstream for that design (DUT + test harness).  From that point, SDK automation is used to build firmware that stimulates the DUT according to user commands received over UART.  Finally, a small Python program is used to send UART commands and check the result.
 
-As a result, this project covers a variety of features in Vivado + SDK workflow that are relavant to text-based designs under revision control:
+As a result, this project covers a variety of features in Vivado + SDK workflow that are relevant to text-based designs under revision control:
 1. Describing a Vivado project with TCL commands rather than an XPR file.
 2. Importing pre-synthesized logic (EDIF / EDF)
 3. Creating a block diagram for a CPU macro and AXI peripherals using TCL, rather than using a BRD file.
