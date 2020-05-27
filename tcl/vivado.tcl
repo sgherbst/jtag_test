@@ -84,9 +84,7 @@ validate_bd_design
 # Add source files #
 ####################
 
-add_files [glob ../tap_core.edf]
-add_files [glob vlog/tap_core.sv]
-add_files [glob vlog/jtag_drv.sv]
+add_files $SOURCE_FILES
 
 ############################
 # Set the top-level module #
