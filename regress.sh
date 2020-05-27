@@ -8,10 +8,10 @@ pip install pyserial
 vivado -mode batch -source tcl/vivado.tcl
 
 # build firmware
-xsct tcl/sdk.tcl
+xsdk -batch -source tcl/sdk.tcl
 
 # program firmware
-xsct tcl/program.tcl
+xsdk -batch -source tcl/program.tcl
 
 # run UART test
 python uart_test.py
