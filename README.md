@@ -28,15 +28,20 @@ As a result, this project covers a variety of features in Vivado + SDK workflow 
 ```shell
 > vivado -mode batch -source tcl/vivado.tcl
 ```
-3. Build the firmware:
+3. Export the hardware description to the SDK:
+```shell
+> mkdir -p project/project.sdk
+> cp project/project.runs/impl_1/jtag_drv.sysdef project/project.sdk/jtag_drv.hdf
+```
+4. Build the firmware:
 ```shell
 > xsdk -batch -source tcl/sdk.tcl
 ```
-4. Program the bitstream and firmware and start the program:
+5. Program the bitstream and firmware and start the program:
 ```shell
 > xsdk -batch -source tcl/program.tcl
 ```
-5. Interact with CPU over UART (need Python 3.7+ with ``pyserial`` installed)
+6. Interact with CPU over UART (need Python 3.7+ with ``pyserial`` installed)
 ```shell
 > python uart_test.py
 ```
