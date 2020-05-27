@@ -2,13 +2,13 @@
 #include "xil_printf.h"
 #include "sleep.h"
 
-void cycle(){
-	poke_tck(1);
-	poke_tck(0);
+void cycle() {
+    poke_tck(1);
+    poke_tck(0);
 }
 
-void do_reset(){
-	// initialize signals
+void do_reset() {
+    // initialize signals
     poke_tdi(0);
     poke_tck(0);
     poke_tms(1);
@@ -106,29 +106,25 @@ u32 shift_dr (u32 data_in, u32 length) {
     cycle();
     cycle();
 
-	// Return result
-	return retval;
+    // Return result
+    return retval;
 }
 
-u32 read_id(){
+u32 read_id() {
     shift_ir(1, 5);
     return shift_dr(0, 32);
 }
 
-int main()
-{
-	if (init_GPIO() != 0) {
-		xil_printf("GPIO Initialization Failed\r\n");
-		return XST_FAILURE;
-	}
-
-	do_reset();
-
-    while(1){
-    	xil_printf("magic=0x%03x\r\n", get_magic_bits());
-    	xil_printf("id=0x%08x\r\n", read_id());
-    	usleep(1000000);
+int main() {
+    if (init_GPIO() != 0) {
+        xil_printf("GPIO Initialization Failed\r\n");
+        return XST_FAILURE;
     }
+    
+    do_reset();
+    
+    xil_printf("magic=0x%03x\r\n", get_magic_bits());
+    xil_printf("id=0x%08x\r\n", read_id());
 
     return 0;
 }

@@ -1,28 +1,25 @@
+# pull in user-defined variables
+source tcl/vars.tcl
+
 # set the work directory
-setws project/project.sdk
+setws $SDK_PATH
 
 # create the hardware configuration
 createhw \
-    -name hw \
-    -hwspec project/project.sdk/jtag_drv.hdf \
+    -name $HW_NAME \
+    -hwspec "$SDK_PATH/$TOP_NAME.hdf"
 
 # create the software configuration
 createapp \
-    -name sw \
-    -hwproject hw \
-    -proc ps7_cortexa9_0 \
-    -app {Empty Application}
+    -name $SW_NAME \
+    -hwproject $HW_NAME \
+    -proc $PROC_NAME \
+    -app "Empty Application"
 
 # import sources
 importsources \
-    -name sw \
-    -path ./firmware
+    -name $SW_NAME \
+    -path $FIRMWARE_DIR
 
 # build application
-projects \
-    -build \
-    -type app \
-    -name sw
-
-# quit
-exit
+projects -build

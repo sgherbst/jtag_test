@@ -1,9 +1,15 @@
+##################################
+# Pull in user-defined variables #
+##################################
+
+source tcl/vars.tcl
+
 #############################
 # Create the Vivado project #
 #############################
 
-create_project -force project project -part xc7z020clg400-1
-set_property board_part www.digilentinc.com:pynq-z1:part0:1.0 [current_project]
+create_project -force $PRJ_NAME $PRJ_DIR -part $FPGA_PART
+set_property board_part $FPGA_BOARD [current_project]
 
 ############################
 # Create the block diagram #
@@ -15,8 +21,8 @@ create_bd_design "design_1"
 
 # Instantiate IPs
 
-create_bd_cell -type ip -vlnv xilinx.com:ip:processing_system7:5.5 processing_system7_0
-create_bd_cell -type ip -vlnv xilinx.com:ip:axi_gpio:2.0 axi_gpio_0
+create_bd_cell -type ip -vlnv $PS_VLNV processing_system7_0
+create_bd_cell -type ip -vlnv $GPIO_VLNV axi_gpio_0
 
 # Configure IPs
 
@@ -29,6 +35,7 @@ set_property \
     [get_bd_cells axi_gpio_0]
 
 # Create ports
+
 create_bd_port -dir I -from 31 -to 0 gpio_in
 create_bd_port -dir O -from 31 -to 0 gpio_out
 
@@ -85,7 +92,7 @@ add_files [glob vlog/jtag_drv.sv]
 # Set the top-level module #
 ############################
 
-set_property -name top -value jtag_drv -objects [current_fileset]
+set_property -name top -value $TOP_NAME -objects [current_fileset]
 
 ##################################################
 # Run synthesis, PnR, and generate the bitstream #
