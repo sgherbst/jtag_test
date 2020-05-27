@@ -93,10 +93,3 @@ set_property -name top -value jtag_drv -objects [current_fileset]
 
 launch_runs impl_1 -to_step write_bitstream -jobs 2
 wait_on_run impl_1
-
-###################
-# Export hardware #
-###################
-
-file mkdir project/project.sdk
-file copy -force project/project.runs/impl_1/jtag_drv.sysdef project/project.sdk/jtag_drv.hdf
