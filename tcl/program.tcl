@@ -39,3 +39,6 @@ dow "$SDK_PATH/$SW_NAME/Debug/$SW_NAME.elf"
 # run program
 puts "Starting the program..."
 con
+
+# print message for debugging purposes
+puts "Program started."

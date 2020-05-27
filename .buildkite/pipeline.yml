@@ -19,6 +19,10 @@ steps:
       deactivate 
     artifact_paths:
       - "project/project.runs/*/*.log"
+      - "project/project.sdk/jtag_drv.hdf"
+      - "project/project.sdk/sw/Debug/sw.elf"
+      - "project/project.sdk/hw/jtag_drv.bit"
+      - "project/project.sdk/hw/ps7_init.tcl"
     timeout_in_minutes: 60
     agents:
         fpga_verif: "true"
