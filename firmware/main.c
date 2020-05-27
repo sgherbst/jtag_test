@@ -1,5 +1,6 @@
 #include "gpio_funcs.h"
-#include "xil_printf.h"
+#include <stdio.h>
+#include <string.h>
 #include "sleep.h"
 
 void cycle() {
@@ -116,15 +117,66 @@ u32 read_id() {
 }
 
 int main() {
+    // character buffering
+    u32 idx = 0;
+    char rcv;
+    char buf [32];
+    
+    // command processing;
+    u32 cmd;
+    u32 arg1;
+    u32 arg2;
+    u32 nargs = 0;
+
     if (init_GPIO() != 0) {
         xil_printf("GPIO Initialization Failed\r\n");
         return XST_FAILURE;
     }
-    
+
     do_reset();
     
-    xil_printf("magic=0x%03x\r\n", get_magic_bits());
-    xil_printf("id=0x%08x\r\n", read_id());
+    while (1) {
+        rcv = inbyte();
+        if ((rcv == ' ') || (rcv == '\t') || (rcv == '\r') || (rcv == '\n')) {
+            // whitespace
+            if (idx > 0) {
+                buf[idx++] = '\0';
+                if (nargs == 0) {
+                    if (strcmp(buf, "RESET") == 0) {
+                        do_reset();
+                        nargs = 0;
+                    } else if (strcmp(buf, "EXIT") == 0) {
+                        return 0;
+                    } else if (strcmp(buf, "ID") == 0) {
+                        xil_printf("%lu\r\n", read_id());
+                    } else if (strcmp(buf, "SIR") == 0) {
+                        cmd = 1;
+                        nargs++;
+                    } else if (strcmp(buf, "SDR") == 0) {
+                        cmd = 2;
+                        nargs++;
+                    } else {
+	                xil_printf("ERROR: Unknown command\r\n");
+		    }
+                } else if (nargs == 1) {
+                    sscanf(buf, "%lu", &arg1);
+                    nargs++;
+                } else if (nargs == 2) {
+                    sscanf(buf, "%lu", &arg2);
+                    if (cmd == 1) {
+                        shift_ir(arg1, arg2);
+                    } else if (cmd == 2) {
+                        xil_printf("%lu\r\n", shift_dr(arg1, arg2));
+                    }
+                    nargs = 0;
+                }  
+            }
+            idx = 0;
+        } else {
+            // load next character
+            buf[idx++] = rcv;
+        }
+    }
 
     return 0;
 }

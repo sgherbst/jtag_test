@@ -1,6 +1,5 @@
 #include "xparameters.h"
 #include "xgpio.h"
-#include "xil_printf.h"
 #include "sleep.h"
 
 XGpio Gpio;
