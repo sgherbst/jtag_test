@@ -16,7 +16,7 @@ As a result, this project covers a variety of features in Vivado + SDK workflow 
 
 ## Prerequisites
 1. You'll need a Zynq FPGA board.  I've tested this example with a PYNQ-Z1 board, but it should run on other Zynq boards with minimal changes (if any).  
-2. Make sure that you have installed Vivado and its SDK.  Sample instructions are [here](https://gist.github.com/sgherbst/f73c31938d3483e6c72e3baf3443f66a) -- they're a bit old but still relevant.  If you're not using the PYNQ-Z1 board, you can skip the part about install PYNQ board files.
+2. Make sure that you have installed Vivado and its SDK.  Sample instructions are [here](https://gist.github.com/sgherbst/f73c31938d3483e6c72e3baf3443f66a).  If you're not using the PYNQ-Z1 board, you can skip the part about installing PYNQ board files.
 3. Generate an EDIF for the TAP core.  Sample instructions are [here](https://gist.github.com/sgherbst/dbb9dfcd01afe0b187ee7263e0bd29d8).
 
 ## Running the flow
@@ -30,11 +30,11 @@ As a result, this project covers a variety of features in Vivado + SDK workflow 
 ```
 3. Build the firmware:
 ```shell
-> xsct tcl/sdk.tcl
+> xsdk -batch -source tcl/sdk.tcl
 ```
 4. Program the bitstream and firmware and start the program:
 ```shell
-> xsct tcl/program.tcl
+> xsdk -batch -source tcl/program.tcl
 ```
 5. Interact with CPU over UART (need Python 3.7+ with ``pyserial`` installed)
 ```shell
