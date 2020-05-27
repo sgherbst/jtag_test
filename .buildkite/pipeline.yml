@@ -1,0 +1,24 @@
+steps:
+  - label: "test"
+    command: |
+      # set up environment
+      source /etc/environment
+      export FPGA_BOARD=xc7z020clg484-1
+      export FPGA_PART=xilinx.com:zc702:part0:1.4
+      export TAP_CORE_LOC=/tools/synopsys/syn/L-2016.03-SP5-5/dw/syn_ver/tap_core.edf
+      printenv
+
+      # create virtual environment
+      python3.7 -m venv venv
+      source venv/bin/activate
+
+      # run regression script
+      source regress.sh
+
+      # deactivate virtual environment
+      deactivate 
+    artifact_paths:
+      - "project/project.runs/*/*.log"
+    timeout_in_minutes: 60
+    agents:
+        fpga_verif: "true"
