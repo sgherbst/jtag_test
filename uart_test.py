@@ -5,7 +5,7 @@ import serial
 # connect to the CPU
 print('Connecting to the CPU...')
 ser = serial.Serial(
-    port='/dev/ttyUSB1',
+    port='/dev/ttyUSB0',
     baudrate=115200
 )
 
