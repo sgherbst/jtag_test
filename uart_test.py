@@ -1,3 +1,7 @@
+# determine the USB port
+import os
+ser_port = os.environ.get('UART_DEV_NAME', '/dev/ttyUSB1')
+
 # import PySerial
 print('Importing PySerial...')
 import serial
@@ -5,7 +9,7 @@ import serial
 # connect to the CPU
 print('Connecting to the CPU...')
 ser = serial.Serial(
-    port='/dev/ttyUSB0',
+    port=ser_port,
     baudrate=115200
 )
 
