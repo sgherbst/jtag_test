@@ -12,10 +12,10 @@ mkdir -p project/project.sdk
 cp project/project.runs/impl_1/jtag_drv.sysdef project/project.sdk/jtag_drv.hdf
 
 # build firmware
-xsdk -batch -source tcl/sdk.tcl
+xsct tcl/sdk.tcl
 
 # program firmware
-xsdk -batch -source tcl/program.tcl
+xsct tcl/program.tcl
 
 # run UART test
 python uart_test.py
