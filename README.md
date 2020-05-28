@@ -24,6 +24,7 @@ As a result, this project covers a variety of features in Vivado + SDK workflow 
     1. ``FPGA_BOARD``: Choose from options listed in ``get_board_parts`` in the Vivado TCL console.
     2. ``FPGA_PART``: Choose from options listed in ``get_parts`` in the Vivado TCL console.
     3. ``TAP_CORE_LOC``: Absolute path to the EDIF file for the TAP core.
+    4. ``UART_DEV_NAME``: Name of the USB serial device (e.g., ``/dev/ttyUSB0``)
 2. Build the FPGA bitstream:
 ```shell
 > vivado -mode batch -source tcl/vivado.tcl
