@@ -19,16 +19,16 @@ rst
 
 # program the FPGA
 puts "Programming the FPGA..."
-fpga "$SDK_PATH/$HW_NAME/$TOP_NAME.bit"
+fpga "$PRJ_DIR/$PRJ_NAME.runs/impl_1/$TOP_NAME.bit"
 
 # make the debugger aware of the memory map
 # TODO: is this needed?
 puts "Setting up the debugger..."
-loadhw "$SDK_PATH/$TOP_NAME.hdf"
+loadhw "$PRJ_DIR/$TOP_NAME.xsa"
 
 # initialize the processor
 puts "Initializing the processor..."
-source "$SDK_PATH/$HW_NAME/ps7_init.tcl"
+source "$PRJ_DIR/$PRJ_NAME.runs/impl_1/ps7_init.tcl"
 ps7_init
 ps7_post_config
 
