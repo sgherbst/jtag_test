@@ -7,7 +7,7 @@ setws $SDK_PATH
 # create the app configuration
 app create \
     -name $SW_NAME \
-    -hw "$PRJ_DIR/$TOP_NAME.xsa" \
+    -hw "$PRJ_DIR/$PRJ_NAME.runs/impl_1/$TOP_NAME.xsa" \
     -os standalone \
     -proc $PROC_NAME \
     -template "Empty Application"
