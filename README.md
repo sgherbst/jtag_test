@@ -29,10 +29,10 @@ As a result, this project covers a variety of features in Vivado + SDK workflow 
 ```shell
 > vivado -mode batch -source tcl/vivado.tcl
 ```
-3. Export the hardware description to the SDK:
+3. Copy over firmware files into the SDK work directory:
 ```shell
-> mkdir -p project/project.sdk
-> cp project/project.runs/impl_1/jtag_drv.sysdef project/project.sdk/jtag_drv.hdf
+> mkdir -p project/project.sdk/sw
+> cp -r firmware project/project.sdk/sw/src
 ```
 4. Build the firmware:
 ```shell
