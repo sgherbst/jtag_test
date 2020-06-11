@@ -24,7 +24,7 @@ fpga "$PRJ_DIR/$PRJ_NAME.runs/impl_1/$TOP_NAME.bit"
 # make the debugger aware of the memory map
 # TODO: is this needed?
 puts "Setting up the debugger..."
-loadhw "$PRJ_DIR/$TOP_NAME.xsa"
+loadhw "$PRJ_DIR/$PRJ_NAME.runs/impl_1/$TOP_NAME.xsa"
 
 # initialize the processor
 puts "Initializing the processor..."
