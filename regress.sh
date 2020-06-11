@@ -8,6 +8,10 @@ pip install pyserial
 vivado -mode batch -source tcl/vivado.tcl
 tree
 
+# create directory for SDK
+mkdir -p project/project.sdk
+tree
+
 # build firmware
 xsct tcl/sdk.tcl
 tree
