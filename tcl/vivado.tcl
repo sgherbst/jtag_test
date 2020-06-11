@@ -102,4 +102,4 @@ wait_on_run impl_1
 ###################
 # Export hardware #
 ###################
-write_hw_platform -fixed -include_bit -force -file "$PRJ_DIR/top.xsa"
+write_hw_platform -fixed -include_bit -force -file "$PRJ_DIR/$TOP_NAME.xsa"
