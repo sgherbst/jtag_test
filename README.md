@@ -36,11 +36,11 @@ As a result, this project covers a variety of features in Vivado + SDK workflow 
 ```
 4. Build the firmware:
 ```shell
-> xsdk -batch -source tcl/sdk.tcl
+> xsct -source tcl/sdk.tcl
 ```
 5. Program the bitstream and firmware and start the program:
 ```shell
-> xsdk -batch -source tcl/program.tcl
+> xsct -batch -source tcl/program.tcl
 ```
 6. Interact with CPU over UART (need Python 3.7+ with ``pyserial`` installed)
 ```shell
