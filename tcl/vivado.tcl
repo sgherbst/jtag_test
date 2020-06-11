@@ -98,3 +98,8 @@ set_property -name top -value $TOP_NAME -objects [current_fileset]
 
 launch_runs impl_1 -to_step write_bitstream -jobs 2
 wait_on_run impl_1
+
+###################
+# Export hardware #
+###################
+write_hw_platform -fixed -include_bit -force -file "$PRJ_DIR/top.xsa"
