@@ -4,22 +4,13 @@ source tcl/vars.tcl
 # set the work directory
 setws $SDK_PATH
 
-# create the hardware configuration
-createhw \
-    -name $HW_NAME \
-    -hwspec "$SDK_PATH/$TOP_NAME.hdf"
-
-# create the software configuration
-createapp \
+# create the app configuration
+app create \
     -name $SW_NAME \
-    -hwproject $HW_NAME \
+    -hw "$PRJ_DIR/$TOP_NAME.xsa" \
+    -os standalone \
     -proc $PROC_NAME \
-    -app "Empty Application"
-
-# import sources
-importsources \
-    -name $SW_NAME \
-    -path $FIRMWARE_DIR
+    -template "Empty Application"
 
 # build application
-projects -build
+app build -name $SW_NAME
