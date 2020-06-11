@@ -1,6 +1,6 @@
 # determine the USB port
 import os
-ser_port = os.environ.get('UART_DEV_NAME', '/dev/ttyUSB2')
+ser_port = os.environ.get('UART_DEV_NAME', '/dev/ttyUSB1')
 
 # import PySerial
 print('Importing PySerial...')
