@@ -7,10 +7,6 @@ pip install pyserial
 # build bitstream
 vivado -mode batch -source tcl/vivado.tcl
 
-# export hardware to SDK
-mkdir -p project/project.sdk
-cp project/jtag_drv.xsa project/project.sdk/jtag_drv.xsa
-
 # build firmware
 xsct tcl/sdk.tcl
 
