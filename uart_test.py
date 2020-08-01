@@ -1,16 +1,24 @@
-# determine the USB port
+# import modules
+print('Importing modules...')
 import os
-ser_port = os.environ.get('UART_DEV_NAME', '/dev/ttyUSB1')
-
-# import PySerial
-print('Importing PySerial...')
 import serial
+import serial.tools.list_ports
+
+# determine the USB port
+print('Determining the USB port...')
+ser_port = os.environ.get('UART_DEV_NAME', None)
+if ser_port is None:
+    matches = serial.tools.list_ports.grep('CP2103')
+    match = list(matches)[0]
+    ser_port = str(match.device)
+print(f'Will use {ser_port}')
 
 # connect to the CPU
 print('Connecting to the CPU...')
 ser = serial.Serial(
     port=ser_port,
-    baudrate=115200
+    baudrate=115200,
+    timeout=30.0  # prevent test from hanging forever
 )
 
 # read the ID

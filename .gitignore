@@ -6,4 +6,5 @@
 *.edn
 
 project
+venv
 NA
